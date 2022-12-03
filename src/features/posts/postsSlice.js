@@ -8,6 +8,7 @@ const initialState = {
   posts: [],
   status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
+  count: 0,
 };
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
@@ -153,7 +154,7 @@ const postsSlice = createSlice({
       .addCase(deletePost.fulfilled, (state, action) => {
         if (!action.payload?.id) {
           console.log('Delete could not complete');
-          console.log(action.payload);
+          console.log('delete code', action.payload);
           return;
         }
         const { id } = action.payload;
